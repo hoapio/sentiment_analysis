@@ -12,9 +12,9 @@ from sklearn.metrics import confusion_matrix, precision_recall_curve, roc_curve,
 
 # Load necessary files (best model, stopwords, product data)
 model_filename = "best_model_SVM.pkl"
-stopwords_df = pd.read_csv('data/stopwords_lst.csv')
-df_resampled = pd.read_csv('data/train_resampled.csv')
-df_sanpham = pd.read_csv('data/San_pham.csv')
+stopwords_df = pd.read_csv('stopwords_lst.csv')
+df_resampled = pd.read_csv('train_resampled.csv')
+df_sanpham = pd.read_csv('San_pham.csv')
 
 # Load the best model
 with open(model_filename, 'rb') as file:
