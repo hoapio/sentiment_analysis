@@ -50,7 +50,7 @@ st.sidebar.write("""
     #### Thời gian báo cáo dự án: 14/12/2024
 """)
 
-tab1, tab2, tab3 = st.tabs(["Business Objective", "Build Project", "New Prediction"])
+tab1, tab2, tab3 = st.tabs(["Business Objective", "Insight", "Prediction"])
 
 with tab1:  
     st.write("#### Mô tả chung về dự án")  
@@ -118,7 +118,7 @@ with tab2:
     plt.legend(['Label 0: Tiêu cực', 'Label 1: Tích cực'])
 
     # Hiển thị biểu đồ trong Streamlit
-    st.subheader("c. Phân bố cảm xúc theo sản phẩm")
+    st.subheader("c. Phân bố cảm xúc theo sản phẩm của tất cả sản phẩm")
     st.pyplot(plt)
 
     # Hiển thị biểu đồ hình tròn cho phân bố cảm xúc theo sản phẩm
@@ -135,13 +135,11 @@ with tab2:
     plt.title(f"Phân bố cảm xúc của sản phẩm: {selected_product_id}")
 
     # Hiển thị biểu đồ trong Streamlit
-    st.subheader("d. Phân bố cảm xúc theo sản phẩm")
+    st.subheader("d. Phân bố cảm xúc theo một sản phẩm")
     st.pyplot(fig)
 
 
 with tab3:
-    st.write("#### Dự đoán cảm xúc sản phẩm")
-
     # 1. Product Selection or New Review Input
     st.subheader("Vui lòng lựa chọn sản phẩm hoặc thêm bình luận mới để phân tích:")
 
