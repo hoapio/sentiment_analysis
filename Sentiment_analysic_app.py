@@ -76,10 +76,9 @@ with tab2:
     st.write("#### Các chỉ số đánh giá")
     st.markdown("""
     #### a. **Accuracy, Confusion Matrix, and Classification Report**:
-    The best model is SVM with an accuracy of **98.78%**.
+    The best model is SVM with an accuracy of **98.78%** and training time of **39.7541 seconds**.
     """)
-
-    st.text("Best Model is SVM with accuracy: 0.9878419452887538 and training time: 39.7541 seconds")
+    
     st.image("model_comparison.png", caption="Model Comparison")
     st.image("confusion_matrix_Naive Bayes.png", caption="Confusion Matrix: Naive Bayes")
     st.image("confusion_matrix_Random Forest.png", caption="Confusion Matrix: Random Forest")
