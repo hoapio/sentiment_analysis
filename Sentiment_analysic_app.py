@@ -73,7 +73,6 @@ with tab2:
     Mô hình này được huấn luyện trên các đánh giá của khách hàng về sản phẩm trên Hasaki.vn để phân loại chúng thành các cảm xúc tích cực hoặc tiêu cực.
     """)
 
-    st.write("#### Các chỉ số đánh giá")
     st.markdown("""
     #### a. **Accuracy, Confusion Matrix, and Classification Report**:
     The best model is SVM with an accuracy of **98.78%** and training time of **39.7541 seconds**.
