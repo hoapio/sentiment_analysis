@@ -142,7 +142,7 @@ elif choice == "Xây dựng dự án":
     st.markdown('<div class="section-title">1. Dữ liệu đầu vào</div>', unsafe_allow_html=True)
     # Hiển thị một vài dòng dữ liệu từ đầu vào Danh_gia.csv
     df = pd.read_csv('Danh_gia.csv')
-    st.write("Dữ liệu đầu vào (5 dòng đầu tiên):")
+    st.write("5 dòng đầu tiên:")
     st.dataframe(df.head())
     st.image("Tong_quan_ve_du_lieu.png")
     st.image("Phan_loai_noi_dung_binh_luan.png")
