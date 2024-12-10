@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import seaborn as sns
 from collections import Counter
-from pandas_profiling import ProfileReport
 
 # Load necessary files (best model, stopwords, product data, and tfidf vectorizer)
 model_filename = "best_model_SVM.pkl"
