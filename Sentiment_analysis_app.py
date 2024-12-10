@@ -135,7 +135,7 @@ if choice == "Tổng quan về dự án":
     
     st.markdown('<div class="section-title">Yêu cầu kỹ thuật</div>', unsafe_allow_html=True)
     st.markdown("""
-    Sử dụng Machine learning với Python và các thư viện như Scikit-learn... để xử lý dữ liệu và huấn luyện mô hình phân tích cảm xúc, phân loại đánh giá.
+    Sử dụng **Machine learning với Python** và các thư viện như **Scikit-learn...** để xử lý dữ liệu và huấn luyện mô hình phân tích cảm xúc, phân loại đánh giá.
     """)
 
 elif choice == "Xây dựng dự án":
