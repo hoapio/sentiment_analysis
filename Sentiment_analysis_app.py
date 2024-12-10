@@ -12,7 +12,7 @@ from collections import Counter
 # Load necessary files (best model, stopwords, product data, and tfidf vectorizer)
 model_filename = "best_model_SVM.pkl"
 vectorizer_filename = "tfidf_vectorizer.pkl"
-stopwords_df = pd.read_csv('data/stopwords_lst.csv')
+stopwords_df = pd.read_csv('stopwords_lst.csv')
 df_resampled = pd.read_csv('train_resampled.csv')
 df_sanpham = pd.read_csv('San_pham.csv')
 
