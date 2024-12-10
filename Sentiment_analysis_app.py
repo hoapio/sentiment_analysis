@@ -13,9 +13,9 @@ from pandas_profiling import ProfileReport
 # Load necessary files (best model, stopwords, product data, and tfidf vectorizer)
 model_filename = "best_model_SVM.pkl"
 vectorizer_filename = "tfidf_vectorizer.pkl"
-stopwords_df = pd.read_csv('data/stopwords_lst.csv')
-df_resampled = pd.read_csv('data/train_resampled.csv')
-df_sanpham = pd.read_csv('data/San_pham.csv')
+stopwords_df = pd.read_csv('stopwords_lst.csv')
+df_resampled = pd.read_csv('train_resampled.csv')
+df_sanpham = pd.read_csv('San_pham.csv')
 
 # Load the best model and tfidf vectorizer
 with open(model_filename, 'rb') as file:
@@ -92,7 +92,7 @@ st.markdown("""
 
 # Tiêu đề với định dạng CSS
 st.markdown('<div class="title">Sentiment Analysis of Hasaki\'s Product Reviews</div>', unsafe_allow_html=True)
-st.image('image/hasaki_banner.jpg', use_container_width=True)
+st.image('hasaki_banner.jpg', use_container_width=True)
 
 # Menu trong sidebar
 menu = ["Tổng quan về dự án", "Xây dựng dự án", "Phân tích sản phẩm", "Phân tích bình luận mới"]
@@ -142,11 +142,11 @@ if choice == "Tổng quan về dự án":
 elif choice == "Xây dựng dự án":
     st.markdown('<div class="section-title">1. Dữ liệu đầu vào</div>', unsafe_allow_html=True)
     # Hiển thị một vài dòng dữ liệu từ đầu vào Danh_gia.csv
-    df = pd.read_csv('data/Danh_gia.csv')
+    df = pd.read_csv('Danh_gia.csv')
     st.write("Dữ liệu đầu vào (5 dòng đầu tiên):")
     st.dataframe(df.head())
-    st.image("image/Tong_quan_ve_du_lieu.png")
-    st.image("image/Phan_loai_noi_dung_binh_luan.png")
+    st.image("Tong_quan_ve_du_lieu.png")
+    st.image("Phan_loai_noi_dung_binh_luan.png")
     
     st.markdown('<div class="section-title">2. Tiền xử lý dữ liệu</div>', unsafe_allow_html=True)
     st.markdown("""
@@ -171,7 +171,7 @@ elif choice == "Xây dựng dự án":
     - Số sao < 4: 0 tương đương Negative - Tiêu cực
 - Xử lý imbalance dữ liệu bằng function resample và chia tập tin thành train và test
     """)
-    st.image('image/du_lieu_train_test.png')        
+    st.image('du_lieu_train_test.png')        
 
     st.markdown('<div class="section-title">5. Xây dựng model</div>', unsafe_allow_html=True)
     st.markdown("""
@@ -193,10 +193,10 @@ Xây dựng mô hình sử dụng các thuật toán đa dạng như Naive Bayes
 **Lựa chọn mô hình SVM vì cho ra kết quả chính xác nhất: 98.78%.**
 """)
     
-    st.image("image/model_comparison.png", caption="Model Comparison", use_container_width=True)
-    st.image("image/confusion_matrix_SVM.png", caption="Confusion Matrix: SVM", use_container_width=True)
-    st.image("image/confusion_matrix_Naive Bayes.png", caption="Confusion Matrix: Naive Bayes", use_container_width=True)
-    st.image("image/confusion_matrix_Random Forest.png", caption="Confusion Matrix: Random Forest", use_container_width=True)
+    st.image("model_comparison.png", caption="Model Comparison", use_container_width=True)
+    st.image("confusion_matrix_SVM.png", caption="Confusion Matrix: SVM", use_container_width=True)
+    st.image("confusion_matrix_Naive Bayes.png", caption="Confusion Matrix: Naive Bayes", use_container_width=True)
+    st.image("confusion_matrix_Random Forest.png", caption="Confusion Matrix: Random Forest", use_container_width=True)
 
     # Display word clouds
     st.markdown('<div class="section-title">7. WordCloud cho đánh giá tích cực và tiêu cực</div>', unsafe_allow_html=True)    
