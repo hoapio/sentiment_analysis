@@ -3,7 +3,6 @@ import pandas as pd
 import pickle
 import re
 import joblib
-from sklearn.feature_extraction.text import TfidfVectorizer
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import seaborn as sns
@@ -86,6 +85,24 @@ st.markdown("""
             font-size: 18px;
             color: #388E3C;
         }
+            
+        /* Đảm bảo hình ảnh không bị tràn */
+        .stImage img {
+            max-width: 100% !important;
+            height: auto !important;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+            
+        /* Điều chỉnh độ rộng của hình ảnh */
+        .wordcloud-container {
+            width: 100%; /* Điều chỉnh khung chứa hình ảnh */
+            max-width: 800px; /* Giới hạn độ rộng tối đa */
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px;
+        }
     </style>
 """, unsafe_allow_html=True)
 
@@ -118,13 +135,13 @@ st.sidebar.markdown("""
 
 
 if choice == "Tổng quan về dự án":  
-    st.markdown('<div class="section-title">Mô tả chung về dự án</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">1. Mô tả chung về dự án</div>', unsafe_allow_html=True)
     st.markdown("""
     Dự án nhằm phát triển một hệ thống sử dụng **Machine Learning với Python** để phân tích và trích xuất các thông tin giá trị từ các **đánh giá của khách hàng** về sản phẩm mỹ phẩm tại **HASAKI.VN**, giúp nhãn hàng hiểu rõ hơn về cảm nhận và nhu cầu của khách hàng.
     Mục tiêu chính là tối ưu hóa quy trình phân tích đánh giá sản phẩm, giúp nhãn hàng **cải thiện chất lượng sản phẩm và dịch vụ dựa trên phản hồi của người tiêu dùng**.
     """)
     
-    st.markdown('<div class="section-title">Mục tiêu và yêu cầu</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">2. Mục tiêu và yêu cầu</div>', unsafe_allow_html=True)
     st.markdown("""
 - **Phân tích đánh giá khách hàng**: Sử dụng **Machine Learning** để phân tích các đánh giá, giúp nhãn hàng hiểu rõ phản hồi và cảm nhận của khách hàng.
 - **Phân loại cảm xúc**: Áp dụng các mô hình để phân loại đánh giá thành tích cực, tiêu cực, từ đó đánh giá mức độ hài lòng của khách hàng.
@@ -133,7 +150,7 @@ if choice == "Tổng quan về dự án":
 - **Tăng cường dịch vụ khách hàng**: Phân tích các vấn đề khách hàng gặp phải để tối ưu dịch vụ hỗ trợ.
     """)
     
-    st.markdown('<div class="section-title">Yêu cầu kỹ thuật</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">3. Yêu cầu kỹ thuật</div>', unsafe_allow_html=True)
     st.markdown("""
     Sử dụng **Machine learning với Python** và các thư viện như **Scikit-learn...** để xử lý dữ liệu và huấn luyện mô hình phân tích cảm xúc, phân loại đánh giá.
     """)
@@ -142,7 +159,7 @@ elif choice == "Xây dựng dự án":
     st.markdown('<div class="section-title">1. Dữ liệu đầu vào</div>', unsafe_allow_html=True)
     # Hiển thị một vài dòng dữ liệu từ đầu vào Danh_gia.csv
     df = pd.read_csv('Danh_gia.csv')
-    st.write("5 dòng đầu tiên:")
+    st.write("Dữ liệu đầu vào (5 dòng đầu tiên):")
     st.dataframe(df.head())
     st.image("Tong_quan_ve_du_lieu.png")
     st.image("Phan_loai_noi_dung_binh_luan.png")
@@ -172,7 +189,7 @@ elif choice == "Xây dựng dự án":
     """)
     st.image('du_lieu_train_test.png')        
 
-    st.markdown('<div class="section-title">5. Xây dựng model</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">5. Xây dựng mô hình</div>', unsafe_allow_html=True)
     st.markdown("""
 Xây dựng mô hình sử dụng các thuật toán đa dạng như Naive Bayes, SVM và Random Forest.
     """)
@@ -191,11 +208,21 @@ Xây dựng mô hình sử dụng các thuật toán đa dạng như Naive Bayes
 
 **Lựa chọn mô hình SVM vì cho ra kết quả chính xác nhất: 98.78%.**
 """)
-    
-    st.image("model_comparison.png", caption="Model Comparison", use_container_width=True)
-    st.image("confusion_matrix_SVM.png", caption="Confusion Matrix: SVM", use_container_width=True)
-    st.image("confusion_matrix_Naive Bayes.png", caption="Confusion Matrix: Naive Bayes", use_container_width=True)
-    st.image("confusion_matrix_Random Forest.png", caption="Confusion Matrix: Random Forest", use_container_width=True)
+    st.markdown('<div class="image-container">', unsafe_allow_html=True)
+    st.image("model_comparison.png", caption="Model Comparison")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    st.markdown('<div class="image-container">', unsafe_allow_html=True)
+    st.image("confusion_matrix_SVM.png", caption="Confusion Matrix: SVM")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    st.markdown('<div class="image-container">', unsafe_allow_html=True)
+    st.image("confusion_matrix_Naive Bayes.png", caption="Confusion Matrix: Naive Bayes")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    st.markdown('<div class="image-container">', unsafe_allow_html=True)
+    st.image("confusion_matrix_Random Forest.png", caption="Confusion Matrix: Random Forest")
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # Display word clouds
     st.markdown('<div class="section-title">7. WordCloud cho đánh giá tích cực và tiêu cực</div>', unsafe_allow_html=True)    
@@ -203,12 +230,17 @@ Xây dựng mô hình sử dụng các thuật toán đa dạng như Naive Bayes
     all_positive_reviews = ' '.join(df_resampled[df_resampled['label'] == 1]['noi_dung_binh_luan_clean'])
     all_negative_reviews = ' '.join(df_resampled[df_resampled['label'] == 0]['noi_dung_binh_luan_clean'])
     
-    
     positive_wc = WordCloud(width=800, height=400,background_color="#55CBCD").generate(all_positive_reviews)
     negative_wc = WordCloud(width=800, height=400,background_color="#FFB6C1").generate(all_negative_reviews)
     
-    st.image(positive_wc.to_array(), caption="Đánh giá tích cực", use_container_width=True)
-    st.image(negative_wc.to_array(), caption="Đánh giá tiêu cực", use_container_width=True)
+    # Hiển thị word cloud với khung chứa CSS
+    st.markdown('<div class="wordcloud-container">', unsafe_allow_html=True)
+    st.image(positive_wc.to_array(), caption="Đánh giá tích cực")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    st.markdown('<div class="wordcloud-container">', unsafe_allow_html=True)
+    st.image(negative_wc.to_array(), caption="Đánh giá tiêu cực")
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # Hiển thị biểu đồ hình tròn cho phân bố cảm xúc theo sản phẩm
     product_sentiment = df_resampled.groupby('ma_san_pham')['label'].value_counts().unstack().fillna(0)
@@ -243,7 +275,7 @@ elif choice == "Phân tích sản phẩm":
             # Fetch product reviews for the selected product
             product_reviews = df_resampled[df_resampled['ma_san_pham'] == product_id]
 
-            st.markdown('<div class="section-title">Thông tin phân tích sản phẩm:</div>', unsafe_allow_html=True)
+            st.markdown('<div class="section-title">1. Thông tin phân tích sản phẩm</div>', unsafe_allow_html=True)
             product_stats = product_reviews.groupby('ma_san_pham').agg(
                 total_reviews=('noi_dung_binh_luan_clean', 'count'),
                 average_rating=('so_sao', 'mean'),
@@ -270,13 +302,15 @@ elif choice == "Phân tích sản phẩm":
         positive_reviews_text = product_reviews[product_reviews['so_sao'] >= 4]['noi_dung_binh_luan_clean']
         negative_reviews_text = product_reviews[product_reviews['so_sao'] <= 2]['noi_dung_binh_luan_clean']
         
-        st.markdown('<div class="section-title">WordCloud cho đánh giá tích cực và tiêu cực</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-title">2. WordCloud cho đánh giá tích cực và tiêu cực</div>', unsafe_allow_html=True)
 
-        positive_wc = WordCloud(width=800, height=400,background_color="#55CBCD").generate(' '.join(positive_reviews_text))
-        negative_wc = WordCloud(width=800, height=400,background_color="#FFB6C1").generate(' '.join(negative_reviews_text))
-        
-        st.image(positive_wc.to_array(), caption="Đánh giá tích cực", use_container_width=True)
-        st.image(negative_wc.to_array(), caption="Đánh giá tiêu cực", use_container_width=True)
+        if positive_reviews_text.any():
+            positive_wc = WordCloud(width=800, height=400, background_color="#55CBCD").generate(' '.join(positive_reviews_text))
+            st.image(positive_wc.to_array(), caption="Đánh giá tích cực", use_container_width=False)
+
+        if negative_reviews_text.any():
+            negative_wc = WordCloud(width=800, height=400, background_color="#FFB6C1").generate(' '.join(negative_reviews_text))
+            st.image(negative_wc.to_array(), caption="Đánh giá tiêu cực", use_container_width=False)
 
         # Top 10 keywords chart
         all_reviews = " ".join(product_reviews['noi_dung_binh_luan_clean'])
@@ -287,7 +321,7 @@ elif choice == "Phân tích sản phẩm":
         top_keywords_df = pd.DataFrame(common_keywords, columns=["Từ khóa", "Tần suất"])
 
         # Display bar chart for the top 10 keywords
-        st.markdown('<div class="section-title">Top 10 từ khóa chính</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-title">3. Top 10 từ khóa chính</div>', unsafe_allow_html=True)
         plt.figure(figsize=(10, 5))
         sns.barplot(x='Tần suất', y='Từ khóa', data=top_keywords_df, palette='viridis')
         st.pyplot(plt)
