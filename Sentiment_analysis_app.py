@@ -270,7 +270,7 @@ elif choice == "Phân tích sản phẩm":
         product_ids = df_sanpham['ma_san_pham'].tolist()
         product_id = st.selectbox("Vui lòng chọn mã sản phẩm", product_ids)
         product_name = df_sanpham[df_sanpham['ma_san_pham'] == product_id]['ten_san_pham'].iloc[0]
-    if st.button('Phân tích bình luận'):
+    if st.button('Phân tích sản phẩm'):
         if product_id:
             # Fetch product reviews for the selected product
             product_reviews = df_resampled[df_resampled['ma_san_pham'] == product_id]
@@ -304,13 +304,17 @@ elif choice == "Phân tích sản phẩm":
         
         st.markdown('<div class="section-title">2. WordCloud cho đánh giá tích cực và tiêu cực</div>', unsafe_allow_html=True)
 
-        if positive_reviews_text.any():
-            positive_wc = WordCloud(width=800, height=400, background_color="#55CBCD").generate(' '.join(positive_reviews_text))
-            st.image(positive_wc.to_array(), caption="Đánh giá tích cực", use_container_width=False)
-
-        if negative_reviews_text.any():
-            negative_wc = WordCloud(width=800, height=400, background_color="#FFB6C1").generate(' '.join(negative_reviews_text))
-            st.image(negative_wc.to_array(), caption="Đánh giá tiêu cực", use_container_width=False)
+        positive_wc = WordCloud(width=800, height=400, background_color="#55CBCD").generate(' '.join(positive_reviews_text))
+        negative_wc = WordCloud(width=800, height=400, background_color="#FFB6C1").generate(' '.join(negative_reviews_text))
+        
+        # Hiển thị word cloud với khung chứa CSS
+        st.markdown('<div class="wordcloud-container">', unsafe_allow_html=True)
+        st.image(positive_wc.to_array(), caption="Đánh giá tích cực")
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+        st.markdown('<div class="wordcloud-container">', unsafe_allow_html=True)
+        st.image(negative_wc.to_array(), caption="Đánh giá tiêu cực")
+        st.markdown('</div>', unsafe_allow_html=True)
 
         # Top 10 keywords chart
         all_reviews = " ".join(product_reviews['noi_dung_binh_luan_clean'])
